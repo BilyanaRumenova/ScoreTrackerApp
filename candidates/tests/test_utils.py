@@ -75,3 +75,6 @@ def test_read_json_data(json_data):
     assert csv_content == expected_rows
     assert "EFGH56788,Invalid Reference,60.0" not in csv_content
     assert "IGKL5678,Invalid Points,600.0" not in csv_content
+
+    os.remove(json_file_path)
+    os.remove(csv_file_path)

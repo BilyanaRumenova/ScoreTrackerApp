@@ -33,7 +33,7 @@ This Django web application is designed to manage candidate information, test sc
 
 ## Importing CSV data
 - To import candidate and score data from a CSV file, use the following command:
-- ```python manage.py read_csv path/to/yourfile.csv```
+- ```python manage.py import_csv path/to/yourfile.csv```
 
 ## Reading JSON Data and Sort
 - To read a JSON file, and write out a CSV file with candidates ordered by score (and name in case of a tie), use the following command:
