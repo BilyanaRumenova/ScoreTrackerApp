@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Candidates List</title>
+</head>
+<body>
+<h1>Candidates List</h1>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Candidate Reference</th>
+        <th>Scores</th>
+    </tr>
+    {% for candidate in candidates %}
+        <tr
+                {% for candidate_score in candidate.scores.all %}
+                    {% if candidate_score.score == max_score %}
+                        style="background-color: #FFFF00;"
+                    {% endif %}>
+                    <td>{{ candidate.name }}</td>
+                    <td>{{ candidate.candidate_reference }}</td>
+                    <td>{{ candidate_score.score }}</td>
+                {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
