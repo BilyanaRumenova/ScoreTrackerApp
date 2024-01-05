@@ -7,8 +7,8 @@ from candidates.models import Candidate, Score
 
 
 class CandidatesView(TemplateView):
-    template_name = 'candidates.html'
-    queryset = Candidate.objects.all().order_by('name')
+    template_name = "candidates.html"
+    queryset = Candidate.objects.all().order_by("name")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -19,14 +19,14 @@ class CandidatesView(TemplateView):
             scores = self.order_candidate_scores(candidate)
             candidates_data[candidate] = scores
 
-        context['candidates'] = candidates_data
-        context['max_score'] = max_score
+        context["candidates"] = candidates_data
+        context["max_score"] = max_score
         return context
 
     @staticmethod
     def get_max_score() -> float:
-        return Score.objects.all().aggregate(Max('score'))['score__max']
+        return Score.objects.all().aggregate(Max("score"))["score__max"]
 
     @staticmethod
     def order_candidate_scores(candidate: Candidate) -> List[Score]:
-        return Score.objects.filter(candidate=candidate).all().order_by('score')
+        return Score.objects.filter(candidate=candidate).all().order_by("score")

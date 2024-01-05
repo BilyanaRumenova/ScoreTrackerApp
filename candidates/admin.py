@@ -5,9 +5,9 @@ from candidates.models import Candidate, Score
 
 @admin.register(Candidate)
 class CandidateAdmin(admin.ModelAdmin):
-    list_display = ('name', 'candidate_reference')
+    list_display = ("name", "candidate_reference")
 
 
 @admin.register(Score)
 class ScoreAdmin(admin.ModelAdmin):
-    list_display = ('candidate', 'score')
+    list_display = ("candidate", "score")

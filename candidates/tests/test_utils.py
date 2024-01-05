@@ -22,17 +22,21 @@ def json_data():
 
 @pytest.fixture
 def csv_data():
-    csv_data = ("candidate_ref,name,score\n"
-                "ABCD1234,Bilyana Konstantinova,75.0\n"
-                "EFGH56788,Invalid reference,60.0\n"
-                "IGKL5678,Invalid points,600.0\n"
-                "WXYZ6789,John Doe, 90.0")
+    csv_data = (
+        "candidate_ref,name,score\n"
+        "ABCD1234,Bilyana Konstantinova,75.0\n"
+        "EFGH56788,Invalid reference,60.0\n"
+        "IGKL5678,Invalid points,600.0\n"
+        "WXYZ6789,John Doe, 90.0"
+    )
     return csv_data
 
 
 @pytest.mark.django_db
 def test_import_csv_data(csv_data):
-    with tempfile.NamedTemporaryFile(mode='w+', suffix='.csv', delete=False) as temp_file:
+    with tempfile.NamedTemporaryFile(
+        mode="w+", suffix=".csv", delete=False
+    ) as temp_file:
         temp_file.write(csv_data)
         temp_file_path = temp_file.name
 
@@ -45,11 +49,15 @@ def test_import_csv_data(csv_data):
 
 
 def test_read_json_data(json_data):
-    with tempfile.NamedTemporaryFile(mode="w+", suffix=".json", delete=False) as json_file:
+    with tempfile.NamedTemporaryFile(
+        mode="w+", suffix=".json", delete=False
+    ) as json_file:
         json.dump(json_data, json_file)
         json_file_path = json_file.name
 
-    with tempfile.NamedTemporaryFile(mode="w+", suffix=".csv", delete=False) as csv_file:
+    with tempfile.NamedTemporaryFile(
+        mode="w+", suffix=".csv", delete=False
+    ) as csv_file:
         csv_file_path = csv_file.name
 
     read_json_data(json_file_path, csv_file_path)

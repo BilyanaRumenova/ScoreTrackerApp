@@ -5,15 +5,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('candidates', '0001_initial'),
+        ("candidates", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='score',
-            name='candidate',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='scores', to='candidates.candidate'),
+            model_name="score",
+            name="candidate",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="scores",
+                to="candidates.candidate",
+            ),
         ),
     ]
